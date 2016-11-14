@@ -1,3 +1,6 @@
+// Used to synchronize the diagrams
+var diagram_syncs = [];
+
 function renderDiagram(id, data, title, xlabel, ylabel, fieldname, errorBars) {
   g = new Dygraph(document.getElementById(id), data, {
     legend: 'always',
@@ -10,4 +13,10 @@ function renderDiagram(id, data, title, xlabel, ylabel, fieldname, errorBars) {
     labelsSeparateLines: true,
     errorBars: errorBars
   });
+  return g;
 }
+
+// Actually sync the diagrams.
+$( document ).ready(function() {
+    Dygraph.synchronize(diagram_syncs, {selection: true, zoom: false});
+});

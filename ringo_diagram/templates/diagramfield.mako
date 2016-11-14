@@ -24,5 +24,8 @@
   var xlabel = "${getattr(field._form._item, field.name).get_diagram_xlabel()}";
   var fieldname = "${field.name}";
   var errorBars = ${str(getattr(field._form._item, field.name).errors_enabled()).lower()};
-  renderDiagram(id, data, title, xlabel, ylabel, fieldname, errorBars);
+  g = renderDiagram(id, data, title, xlabel, ylabel, fieldname, errorBars);
+  % if renderer._config.sync:
+  diagram_syncs.push(g);
+  % endif
 </script>
