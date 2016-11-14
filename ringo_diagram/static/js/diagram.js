@@ -18,5 +18,7 @@ function renderDiagram(id, data, title, xlabel, ylabel, fieldname, errorBars) {
 
 // Actually sync the diagrams.
 $( document ).ready(function() {
-    Dygraph.synchronize(diagram_syncs, {selection: true, zoom: false});
+    if (diagram_syncs.length > 0) {
+        Dygraph.synchronize(diagram_syncs, {selection: true, zoom: false});
+    }
 });
