@@ -1,7 +1,7 @@
 // Used to synchronize the diagrams
 var diagram_syncs = [];
 
-function renderDiagram(id, data, title, xlabel, ylabel, fieldname, errorBars) {
+function renderDiagram(id, data, title, xlabel, ylabel, fieldname, errorBars, hlcb, uhlcb) {
   g = new Dygraph(document.getElementById(id), data, {
     legend: 'always',
     title: title,
@@ -11,7 +11,9 @@ function renderDiagram(id, data, title, xlabel, ylabel, fieldname, errorBars) {
     ylabel: ylabel,
     labelsDiv: fieldname+'_legend',
     labelsSeparateLines: true,
-    errorBars: errorBars
+    errorBars: errorBars,
+    highlightCallback: hlcb,
+    unhighlightCallback: uhlcb
   });
   return g;
 }
